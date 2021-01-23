@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<p>{{ object.title }}</p>
+<p>{{ object.author }}</p>
+<p>{{ object.content }}</p>
+
+{% if object.image.url != null %}
+<p><img src = "{{ object.image.url }}" width=300px ></p>
+
+{% else %}
+<p></p>
+
+{% endif %}
+
+
+
+<p><a href = "{% url 'update' object.pk %}">更新</a></p>
+<p><a href = "{% url 'delete' object.pk %}">削除</a></p>
+
+<a href="{% url 'good' object.pk %}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">いいねする</a>
+<a href="{% url 'read' object.pk %}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">既読にする</a>
+
+<a href = "{% url 'list' %}">一覧へ</a>
+
+
+{% endblock content %}
